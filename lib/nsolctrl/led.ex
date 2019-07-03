@@ -2,7 +2,7 @@ defmodule NSolCtrl.Led do
 
   use GenServer
 
-  @gpio_pin 18
+  @gpio_pin 4
 
   def start_link(default) do
     GenServer.start_link(__MODULE__, default, name: __MODULE__)

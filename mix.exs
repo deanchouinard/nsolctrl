@@ -27,7 +27,7 @@ defmodule NSolCtrl.MixProject do
   def application do
     [
       mod: {NSolCtrl.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :inets, :ssl]
     ]
   end
 
@@ -38,7 +38,7 @@ defmodule NSolCtrl.MixProject do
       {:nerves, "~> 1.4", runtime: false},
       {:shoehorn, "~> 0.4"},
       {:ring_logger, "~> 0.6"},
-      {:toolshed, "~> 0.2"},
+      {:toolshed, ">= 0.2.10"},
       {:circuits_gpio, "~> 0.1"},
 
       # Dependencies for all targets except :host
