@@ -1,5 +1,6 @@
 defmodule InfluxDB do
   use GenServer
+  require Logger
 
   #  defstruct sensor: nil, temp: nil
 
@@ -26,11 +27,21 @@ defmodule InfluxDB do
   def init(_) do
     #    :timer.send_interval(5000, :cleanup)
     # {:ok, %SimpleCtrl{}}
-    {:ok, {}}
+    {:ok, []}
   end
 
   def handle_cast({:put, sensor, temp}, state) do
-    {:noreply, %{state | sensor: sensor, temp: temp}}
+    # {:ok, {{'HTTP/1.1', 200, 'OK'}, _headers, _body} =
+    #    :httpc.request(:get, {'http://google.com', []}, [], [])
+    
+    data = 'temperature,machine=unit43,type=test external=#{sensor},internal=#{temp}'
+
+    :httpc.request(:post, {'http://localhost:8086/write?db=mydb', [], 'application/binary', data}, [], [])
+
+    IO.puts data
+    Logger.info data
+
+    {:noreply, [ {sensor, temp} | state ] }
   end
 
   def handle_call({:get}, _, state) do

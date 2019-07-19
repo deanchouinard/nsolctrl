@@ -6,8 +6,10 @@ defmodule NSolCtrl.Application do
   @target Mix.target()
 
   use Application
+  require Logger
 
   def start(_type, _args) do
+    Logger.info("Starting NSolCtrl...")
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: NSolCtrl.Supervisor]
@@ -19,7 +21,8 @@ defmodule NSolCtrl.Application do
     [
       # Starts a worker by calling: NSolCtrl.Worker.start_link(arg)
       # {NSolCtrl.Worker, arg},
-      {TestServer, []}
+      {TestServer, []},
+      {NSolCtrl.Led, nil}
     ]
   end
 
@@ -27,6 +30,7 @@ defmodule NSolCtrl.Application do
     [
       # Starts a worker by calling: NSolCtrl.Worker.start_link(arg)
       # {NSolCtrl.Worker, arg},
+      {NSolCtrl.Led, nil}
     ]
   end
 end
