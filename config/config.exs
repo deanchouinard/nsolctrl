@@ -82,3 +82,7 @@ config :influxdb,
 # Uncomment to use target specific configurations
 
 # import_config "#{Mix.target()}.exs"
+if Mix.target() != :host do
+   import_config "target.exs"
+end
+

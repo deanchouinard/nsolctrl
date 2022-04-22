@@ -5,7 +5,8 @@
 ##  for read only filesystem.
 
 # -name solar_ctrl@0.0.0.0
--setcookie p73rfnfdhrlvxxvoilw5cnr3oho66prawdxm2egh2djqqjuf2hohpr2lvtvnte4q
+# -setcookie p73rfnfdhrlvxxvoilw5cnr3oho66prawdxm2egh2djqqjuf2hohpr2lvtvnte4q
+-setcookie <%= @release.options[:cookie] %>
 
 ## Use Ctrl-C to interrupt the current shell rather than invoking the emulator's
 ## break handler and possibly exiting the VM.
