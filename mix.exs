@@ -50,15 +50,15 @@ defmodule NSolCtrl.MixProject do
     [
       # Dependencies for all targets
       {:nerves, "~> 1.6", runtime: false},
-      {:shoehorn, "~> 0.6"},
+      {:shoehorn, "~> 0.9.1"},
       {:ring_logger, "~> 0.6"},
       {:toolshed, ">= 0.2.10"},
       {:circuits_gpio, "~> 0.1"},
 
       # Dependencies for all targets except :host
       {:nerves_runtime, "~> 0.6", targets: @all_targets},
-      {:nerves_init_gadget, "~> 0.4", targets: @all_targets},
-
+      #{:nerves_init_gadget, "~> 0.4", targets: @all_targets},
+      {:vintage_net_wifi, "~> 0.8"},
       # Dependencies for specific targets
       {:nerves_system_rpi, "~> 1.8", runtime: false, targets: :rpi},
       {:nerves_system_rpi0, "~> 1.8", runtime: false, targets: :rpi0},
